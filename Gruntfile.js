@@ -5,7 +5,7 @@
 //   css: css
 //   compass: _scss
 //   javascript: js
-//   coffeescript: _src
+//   coffeescript: _coffee
 //   images: img
 //   fonts: fonts
 
@@ -31,7 +31,7 @@ module.exports = function (grunt) {
         tasks: ['copy:stageCss', 'autoprefixer:server']
       },
       coffee: {
-        files: ['<%= yeoman.app %>/_src/**/*.coffee'],
+        files: ['<%= yeoman.app %>/_coffee/**/*.coffee'],
         tasks: ['coffee:dist']
       },
       coffeeTest: {
@@ -161,9 +161,12 @@ module.exports = function (grunt) {
     },
     coffee: {
       dist: {
+        options: {
+          sourceMap: true
+        },
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/_src',
+          cwd: '<%= yeoman.app %>/_coffee',
           src: '**/*.coffee',
           dest: '.tmp/js',
           ext: '.js'
@@ -330,7 +333,7 @@ module.exports = function (grunt) {
           'level': 'ignore'
         }
       },
-      check: ['<%= yeoman.app %>/_src/*.coffee']
+      check: ['<%= yeoman.app %>/_coffee/*.coffee']
     },
     jshint: {
       options: {
