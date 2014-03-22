@@ -6,42 +6,33 @@
     <title>{{ page.title }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
-
-    <!-- build:css({app,.tmp}) /css/main.css -->
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory-->
+    <!-- build:css({app,.tmp}) /css/main.css-->
     <link rel="stylesheet" href="/_bower_components/normalize-css/normalize.css">
     <link rel="stylesheet" href="/css/syntax.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/h5bp_before.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/h5bp_after.css">
-    <!-- endbuild -->
-
-    <!-- build:js({app,.tmp}) /js/head-scripts.js -->
-    <!-- Replace with a custom modernizer build for production -->
+    <!-- endbuild-->
+    <!-- build:js({app,.tmp}) /js/head-scripts.js-->
+    <!-- Replace with a custom modernizer build for production-->
     <script src="/_bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
-
+    <!-- endbuild-->
   </head>
   <body>
-    <!--[if lt IE 8]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
+<!--[if lt IE 8]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
     <div class="container">
       <div class="row">
-        <main class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-          {{ content }}
-        </main>
+        <main class="col-lg-9 col-md-9 col-sm-9 col-xs-12">{{ content }}</main>
         <aside class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
           <p>Sidebar</p>
         </aside>
       </div>
     </div>
-
     {% include scripts.html %}
     {% include googleanalytics.html %}
-
   </body>
 </html>

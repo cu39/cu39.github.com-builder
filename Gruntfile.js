@@ -30,6 +30,10 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/_less/**/*.less'],
         tasks: ['less:dist', 'autoprefixer:server']
       },
+      jade: {
+        files: ['<%= yeoman.app %>/_jade/**/*.jade'],
+        tasks: ['jade:dist']
+      },
       autoprefixer: {
         files: ['<%= yeoman.app %>/css/**/*.css'],
         tasks: ['copy:stageCss', 'autoprefixer:server']
@@ -152,6 +156,20 @@ module.exports = function (grunt) {
           src: '*.less',
           dest: '.tmp/css',
           ext: '.css'
+        }]
+      }
+    },
+    jade: {
+      options: {
+        pretty: true
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/_jade',
+          src: '**/*.jade',
+          dest: '<%= yeoman.app %>',
+          ext: '.html'
         }]
       }
     },
@@ -379,6 +397,7 @@ module.exports = function (grunt) {
         'compass:server',
         'less:dist',
         'coffee:dist',
+        'jade:dist',
         'copy:stageCss',
         'jekyll:server'
       ],
@@ -386,6 +405,7 @@ module.exports = function (grunt) {
         'compass:dist',
         'less:dist',
         'coffee:dist',
+        'jade:dist',
         'copy:dist'
       ]
     }
