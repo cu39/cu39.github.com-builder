@@ -26,6 +26,10 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/_scss/**/*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer:server']
       },
+      less: {
+        files: ['<%= yeoman.app %>/_less/**/*.less'],
+        tasks: ['less:dist', 'autoprefixer:server']
+      },
       autoprefixer: {
         files: ['<%= yeoman.app %>/css/**/*.css'],
         tasks: ['copy:stageCss', 'autoprefixer:server']
@@ -136,6 +140,19 @@ module.exports = function (grunt) {
           debugInfo: true,
           generatedImagesDir: '.tmp/img/generated'
         }
+      }
+    },
+    less: {
+      options: {
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/_less',
+          src: '*.less',
+          dest: '.tmp/css',
+          ext: '.css'
+        }]
       }
     },
     autoprefixer: {
@@ -360,12 +377,14 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'compass:server',
+        'less:dist',
         'coffee:dist',
         'copy:stageCss',
         'jekyll:server'
       ],
       dist: [
         'compass:dist',
+        'less:dist',
         'coffee:dist',
         'copy:dist'
       ]
