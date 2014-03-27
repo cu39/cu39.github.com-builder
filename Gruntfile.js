@@ -148,6 +148,7 @@ module.exports = function (grunt) {
     },
     less: {
       options: {
+        sourceMap: true
       },
       dist: {
         files: [{
