@@ -3,7 +3,7 @@
 
 // Directory reference:
 //   css: css
-//   compass: _scss
+//   sass: _scss
 //   javascript: js
 //   coffeescript: _coffee
 //   images: img
@@ -22,9 +22,9 @@ module.exports = function (grunt) {
       dist: 'dist'
     },
     watch: {
-      compass: {
+      sass: {
         files: ['<%= yeoman.app %>/_scss/**/*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer:server']
+        tasks: ['sass:server', 'autoprefixer:server']
       },
       less: {
         files: ['<%= yeoman.app %>/_less/**/*.less'],
@@ -119,31 +119,35 @@ module.exports = function (grunt) {
         '.jekyll'
       ]
     },
-    compass: {
+    sass: {
       options: {
-        // If you're using global Sass gems, require them here.
-        // require: ['singularity', 'jacket'],
         bundleExec: true,
-        sassDir: '<%= yeoman.app %>/_scss',
-        cssDir: '.tmp/css',
-        imagesDir: '<%= yeoman.app %>/img',
-        javascriptsDir: '<%= yeoman.app %>/js',
-        relativeAssets: false,
-        httpImagesPath: '/img',
-        httpGeneratedImagesPath: '/img/generated',
-        outputStyle: 'expanded',
-        raw: 'extensions_dir = "<%= yeoman.app %>/_bower_components"\n'
+        debugInfo: false,
+        lineNumbers: false,
+        loadPath: 'app/_bower_components',
+        sourcemap: true
       },
       dist: {
-        options: {
-          generatedImagesDir: '<%= yeoman.dist %>/img/generated'
-        }
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/_scss',
+          src: '**/*.{scss,sass}',
+          dest: '.tmp/<%= cssDir %>',
+          ext: '.css'
+        }]
       },
       server: {
         options: {
           debugInfo: true,
-          generatedImagesDir: '.tmp/img/generated'
-        }
+          lineNumbers: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/_scss',
+          src: '**/*.{scss,sass}',
+          dest: '.tmp/css',
+          ext: '.css'
+        }]
       }
     },
     less: {
@@ -395,7 +399,7 @@ module.exports = function (grunt) {
     },
     concurrent: {
       server: [
-        'compass:server',
+        'sass:server',
         'less:dist',
         'coffee:dist',
         'jade:dist',
@@ -403,7 +407,7 @@ module.exports = function (grunt) {
         'jekyll:server'
       ],
       dist: [
-        'compass:dist',
+        'sass:dist',
         'less:dist',
         'coffee:dist',
         'jade:dist',
@@ -442,7 +446,7 @@ module.exports = function (grunt) {
   grunt.registerTask('check', [
     'clean:server',
     'jekyll:check',
-    'compass:server',
+    'sass:server',
     'coffeelint:check',
     'coffee:dist',
     'jshint:all',
