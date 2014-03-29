@@ -407,13 +407,12 @@ module.exports = (grunt) ->
     grunt.task.run ["serve"]
     return
 
-
   # No real tests yet. Add your own.
   grunt.registerTask "test", []
-
   #   'clean:server',
   #   'concurrent:test',
   #   'connect:test'
+
   grunt.registerTask "check", [
     "clean:server"
     "jekyll:check"
