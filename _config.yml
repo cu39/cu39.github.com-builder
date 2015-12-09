@@ -12,7 +12,7 @@ author:
 # Grunt handles images and assets.
 exclude: ['img', 'css', 'js', 'fonts',
           '**.png', '**.jpg', '**.jpeg', '**.gif', '**.webp', '**.svg', '**.ico',
-          'node_modules']
+          'node_modules', 'vendor']
 
 include: ['.htaccess']
 
@@ -25,7 +25,9 @@ paginate: 5
 paginate_path: 'page:num'
 
 # Markdown library
-markdown: redcarpet
+markdown: kramdown
 #   extensions: ['fenced_code_blocks', 'smart']
 
-pygments: true
+highlighter: rouge
+
+gems: ['jekyll-paginate']

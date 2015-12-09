@@ -122,7 +122,7 @@ module.exports = (grunt) ->
         debugInfo: false
         lineNumbers: false
         loadPath: "app/_bower_components"
-        sourcemap: true
+        sourcemap: "auto"
       dist:
         files: [
           expand: true

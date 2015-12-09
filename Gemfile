@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
-gem 'jekyll', '~>1.4.0'
-gem 'redcarpet'
-gem 'sass', '>=3.3'
-gem 'pygments.rb', '0.5.0'
+gem 'jekyll', '~>3.0.0'
+gem 'jekyll-paginate', '~>1.1.0'
+gem 'kramdown'
+gem 'sass', '~>3.4.0'
+gem 'rouge', '~>1.10.1'
