@@ -25,11 +25,11 @@ html(class="no-js")
 
   body
     != "\n<!--[if lt IE 8]>"
-      p(class="browsehappy") You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      p.browsehappy You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
     != "\n<![endif]-->"
 
-    div(class="container")
-      div(class="row")
+    div.container
+      div.row
         main(class="col-lg-9 col-md-9 col-sm-9 col-xs-12")
           {{ content }}
         aside(class="col-lg-3 col-md-3 col-sm-3 col-xs-12")
