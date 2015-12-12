@@ -10,5 +10,13 @@
    Author's custom styles
    ========================================================================== */
 
+$title_fonts: "Damion", serif;
 
+h1#sitename {
+  font-family: $title_fonts;
+  text-decoration: italic;
+}
 
+body {
+  line-height: 2.0em;
+}
