@@ -30,10 +30,12 @@ html(class="no-js")
 
     div.container
       div.row
-        main(class="col-lg-9 col-md-9 col-sm-9 col-xs-12")
-          {{ content }}
-        aside(class="col-lg-3 col-md-3 col-sm-3 col-xs-12")
+        main.col-lg-9.col-md-9.col-sm-9.col-xs-12
+          | {{ content }}
+        aside.col-lg-3.col-md-3.col-sm-3.col-xs-12
           p Sidebar
     = "\n    "
-    {% include scripts.html %}
-    {% include googleanalytics.html %}
+    | {% include scripts.html %}
+    | {% include googleanalytics.html %}
+
+= "\n"
