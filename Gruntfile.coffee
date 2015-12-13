@@ -363,7 +363,6 @@ module.exports = (grunt) ->
       check:
         src: [
           "<%= yeoman.app %>/css/**/*.css"
-          "<%= yeoman.app %>/_scss/**/*.scss"
         ]
 
     # grunt-concurrent
