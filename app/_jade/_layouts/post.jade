@@ -3,7 +3,8 @@
 | ---
 = "\n"
 
-h2 {{ page.title }}
+h2
+  a(href="{{ post.url }}") {{ page.title }}
 
 article.post
   | {{ content }}
