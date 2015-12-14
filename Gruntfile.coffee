@@ -333,10 +333,12 @@ module.exports = (grunt) ->
     buildcontrol:
       dist:
         options:
-          remote: "../"
-          branch: "gh-pages"
+          dist: "<%= yeoman.dist %>"
+          branch: "master"
+          remote: "git@github.com:cu39/cu39.github.io.git"
+          remoteBranch: "master"
           commit: true
-          push: true
+          push: false
 
     # grunt-coffeelint
     coffeelint:
