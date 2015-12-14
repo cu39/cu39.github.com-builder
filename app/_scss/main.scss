@@ -10,13 +10,31 @@
    Author's custom styles
    ========================================================================== */
 
-$title_fonts: "Damion", serif;
+$kinagashi-darkbrown:   #261D0C;
+$kinagashi-ashbrown:    #B2A387;
+$kinagashi-ivory:       #FFF2DB;
+$kinagashi-indigo:      #2E3F52;
+$kinagashi-ashblue:     #526982;
 
-h1#sitename {
-  font-family: $title_fonts;
-  text-decoration: italic;
-}
+$title_fonts: "Damion", serif;
 
 body {
   line-height: 2.0em;
+}
+
+p > code {
+  border: 1px solid lighten($kinagashi-ashblue, 33%);
+}
+
+h1#sitename {
+  text-align: center;
+  font-size: 24pt;
+  font-family: $title_fonts;
+
+  a:link, a:visited { color: #403030; }
+  a:active { color: $kinagashi-indigo; }
+}
+
+aside.copyright {
+  text-align: right;
 }
