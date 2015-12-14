@@ -128,7 +128,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: "<%= yeoman.app %>/_scss"
           src: "**/*.{scss,sass}"
-          dest: ".tmp/<%= cssDir %>"
+          dest: ".tmp/css"
           ext: ".css"
         ]
       server:
