@@ -24,6 +24,7 @@ module.exports = (grunt) ->
       app: "app"
       dist: "dist"
       tmp: ".tmp"
+      bootstrap: "node_modules/bootstrap-less"
 
     # grunt-contrib-watch
     watch:
@@ -150,11 +151,9 @@ module.exports = (grunt) ->
         sourceMap: true
       dist:
         files: [{
-          expand: true
-          cwd: "<%= yeoman.app %>/_less"
-          src: "*.less"
-          dest: "<%= yeoman.tmp %>/css"
-          ext: ".css"
+          expand: false
+          src: "<%= yeoman.app %>/_less/bootstrap.less"
+          dest: "<%= yeoman.tmp %>/css/bootstrap.css"
         }]
 
     # grunt-contrib-less
@@ -290,24 +289,45 @@ module.exports = (grunt) ->
     # grunt-contrib-copy
     copy:
       dist:
-        files: [{
-          expand: true
-          dot: true
-          cwd: "<%= yeoman.app %>"
-          src: [
-            # Jekyll processes and moves HTML and text files.
-            # Usemin moves CSS and javascript inside of Usemin blocks.
-            # Copy moves asset files and directories.
-            "img/**/*"
-            "fonts/**/*"
-            # Like Jekyll, exclude files & folders prefixed with an underscore.
-            "!**/_*{,/**}"
-            # Explicitly add any files your site needs for distribution here.
-            "favicon.ico"
-            "apple-touch*.png"
-          ]
-          dest: "<%= yeoman.dist %>"
-        }]
+        files: [
+          {
+            expand: true
+            dot: true
+            cwd: "<%= yeoman.app %>"
+            src: [
+              # Jekyll processes and moves HTML and text files.
+              # Usemin moves CSS and javascript inside of Usemin blocks.
+              # Copy moves asset files and directories.
+              "img/**/*"
+              "fonts/**/*"
+              # Like Jekyll, exclude files & folders prefixed with an underscore.
+              "!**/_*{,/**}"
+              # Explicitly add any files your site needs for distribution here.
+              "favicon.ico"
+              "apple-touch*.png"
+            ]
+            dest: "<%= yeoman.dist %>"
+          }
+          {
+            expand: true
+            flatten: true
+            src: [ "<%= yeoman.bootstrap %>/**/*.{eot*,svg,ttf,woff*}" ]
+            dest: "<%= yeoman.dist %>/fonts/"
+            filter: "isFile"
+          }
+          {
+            expand: true
+            flatten: true
+            cwd: "<%= yeoman.bootstrap %>/js"
+            src: [
+              "*.js"
+              "!bootstrap.js"
+              "!*.min.js"
+            ]
+            dest: "<%= yeoman.tmp %>/js/bootstrap/"
+            filter: "isFile"
+          }
+        ]
       # Copy CSS into .tmp directory for Autoprefixer processing
       stageCss:
         files: [{
@@ -346,7 +366,10 @@ module.exports = (grunt) ->
       options:
         max_line_length:
           level: "ignore"
-      check: ["<%= yeoman.app %>/_coffee/*.coffee"]
+      check: [
+        "Gruntfile.coffee"
+        "<%= yeoman.app %>/_coffee/*.coffee"
+      ]
 
     # grunt-contrib-jshint
     jshint:
