@@ -7,7 +7,7 @@
 #   javascript: js
 #   coffeescript: _coffee
 #   images: img
-#   fonts: fonts
+#   fonts: font
 module.exports = (grunt) ->
 
   # Show elapsed time after tasks run
@@ -299,7 +299,7 @@ module.exports = (grunt) ->
               # Usemin moves CSS and javascript inside of Usemin blocks.
               # Copy moves asset files and directories.
               "img/**/*"
-              "fonts/**/*"
+              "font/**/*"
               # Like Jekyll, exclude files & folders prefixed with an underscore.
               "!**/_*{,/**}"
               # Explicitly add any files your site needs for distribution here.
@@ -312,7 +312,7 @@ module.exports = (grunt) ->
             expand: true
             flatten: true
             src: [ "<%= yeoman.bootstrap %>/**/*.{eot*,svg,ttf,woff*}" ]
-            dest: "<%= yeoman.dist %>/fonts/"
+            dest: "<%= yeoman.dist %>/font/"
             filter: "isFile"
           }
           {
@@ -347,7 +347,7 @@ module.exports = (grunt) ->
           "<%= yeoman.dist %>/js/**/*.js"
           "<%= yeoman.dist %>/css/**/*.css"
           "<%= yeoman.dist %>/img/**/*.{gif,jpg,jpeg,png,svg,webp}"
-          "<%= yeoman.dist %>/fonts/**/*.{eot*,otf,svg,ttf,woff}"
+          "<%= yeoman.dist %>/font/**/*.{eot*,otf,svg,ttf,woff}"
         ]]
 
     # grunt-build-control
