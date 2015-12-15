@@ -3,10 +3,10 @@
 | ---
 = "\n"
 
+p.date {{ page.date | date: '%B %d, %Y' }}
+
 h2
   a(href="{{ page.url }}") {{ page.title }}
-
-p.date {{ page.date | date: '%B %d, %Y' }}
 
 article.post
   | {{ content }}
