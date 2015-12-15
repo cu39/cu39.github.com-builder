@@ -134,7 +134,7 @@ module.exports = (grunt) ->
         ]
       server:
         options:
-          debugInfo: true
+          debugInfo: false
           lineNumbers: true
         files: [{
           expand: true
@@ -365,7 +365,7 @@ module.exports = (grunt) ->
         csslintrc: ".csslintrc"
       check:
         src: [
-          "<%= yeoman.app %>/css/**/*.css"
+          "<%= yeoman.tmp %>/css/**/*.css"
         ]
 
     # grunt-concurrent
