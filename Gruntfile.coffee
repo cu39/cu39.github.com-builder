@@ -23,6 +23,7 @@ module.exports = (grunt) ->
     yeoman:
       app: "app"
       dist: "dist"
+      tmp: ".tmp"
 
     # grunt-contrib-watch
     watch:
@@ -64,8 +65,8 @@ module.exports = (grunt) ->
           livereload: "<%= connect.options.livereload %>"
         files: [
           ".jekyll/**/*.html"
-          ".tmp/css/**/*.css"
-          "{.tmp,<%= yeoman.app %>}/<%= js %>/**/*.js"
+          "<%= yeoman.tmp %>/css/**/*.css"
+          "{<%= yeoman.app %>,<%= yeoman.tmp %>}/js/**/*.js"
           "<%= yeoman.app %>/img/**/*.{gif,jpg,jpeg,png,svg,webp}"
         ]
 
@@ -80,7 +81,7 @@ module.exports = (grunt) ->
         options:
           open: true
           base: [
-            ".tmp"
+            "<%= yeoman.tmp %>"
             ".jekyll"
             "<%= yeoman.app %>"
           ]
@@ -91,7 +92,7 @@ module.exports = (grunt) ->
       test:
         options:
           base: [
-            ".tmp"
+            "<%= yeoman.tmp %>"
             ".jekyll"
             "test"
             "<%= yeoman.app %>"
@@ -111,7 +112,7 @@ module.exports = (grunt) ->
           ]
         ]
       server: [
-        ".tmp"
+        "<%= yeoman.tmp %>"
         ".jekyll"
       ]
 
@@ -128,7 +129,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: "<%= yeoman.app %>/_scss"
           src: "**/*.{scss,sass}"
-          dest: ".tmp/css"
+          dest: "<%= yeoman.tmp %>/css"
           ext: ".css"
         ]
       server:
@@ -139,7 +140,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: "<%= yeoman.app %>/_scss"
           src: "**/*.{scss,sass}"
-          dest: ".tmp/css"
+          dest: "<%= yeoman.tmp %>/css"
           ext: ".css"
         }]
 
@@ -152,7 +153,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: "<%= yeoman.app %>/_less"
           src: "*.less"
-          dest: ".tmp/css"
+          dest: "<%= yeoman.tmp %>/css"
           ext: ".css"
         }]
 
@@ -183,9 +184,9 @@ module.exports = (grunt) ->
       server:
         files: [{
           expand: true
-          cwd: ".tmp/css"
+          cwd: "<%= yeoman.tmp %>/css"
           src: "**/*.css"
-          dest: ".tmp/css"
+          dest: "<%= yeoman.tmp %>/css"
         }]
 
     # grunt-contrib-coffee
@@ -197,7 +198,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: "<%= yeoman.app %>/_coffee"
           src: "**/*.coffee"
-          dest: ".tmp/js"
+          dest: "<%= yeoman.tmp %>/js"
           ext: ".js"
         }]
       test:
@@ -205,7 +206,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: "test/spec"
           src: "**/*.coffee"
-          dest: ".tmp/spec"
+          dest: "<%= yeoman.tmp %>/spec"
           ext: ".js"
         }]
 
@@ -314,7 +315,7 @@ module.exports = (grunt) ->
           dot: true
           cwd: "<%= yeoman.app %>/css"
           src: "**/*.css"
-          dest: ".tmp/css"
+          dest: "<%= yeoman.tmp %>/css"
         }]
 
     # grunt-filerev
@@ -354,7 +355,7 @@ module.exports = (grunt) ->
         reporter: require("jshint-stylish")
       all: [
         "Gruntfile.js"
-        "{<%= yeoman.app %>,.tmp}/js/**/*.js"
+        "{<%= yeoman.app %>,<%= yeoman.tmp %>}/js/**/*.js"
         "test/spec/**/*.js"
       ]
 
