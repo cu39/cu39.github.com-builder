@@ -66,7 +66,7 @@ module.exports = (grunt) ->
         files: [
           ".jekyll/**/*.html"
           "<%= yeoman.tmp %>/css/**/*.css"
-          "{<%= yeoman.app %>,<%= yeoman.tmp %>}/js/**/*.js"
+          "<%= yeoman.tmp %>/js/**/*.js"
           "<%= yeoman.app %>/img/**/*.{gif,jpg,jpeg,png,svg,webp}"
         ]
 
@@ -355,7 +355,7 @@ module.exports = (grunt) ->
         reporter: require("jshint-stylish")
       all: [
         "Gruntfile.js"
-        "{<%= yeoman.app %>,<%= yeoman.tmp %>}/js/**/*.js"
+        "<%= yeoman.tmp %>/js/**/*.js"
         "test/spec/**/*.js"
       ]
 
