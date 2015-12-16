@@ -129,7 +129,7 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: "<%= yeoman.app %>/_scss"
-          src: "**/*.{scss,sass}"
+          src: [ "**/*.{scss,sass}" ]
           dest: "<%= yeoman.tmp %>/css"
           ext: ".css"
         ]
@@ -140,7 +140,7 @@ module.exports = (grunt) ->
         files: [{
           expand: true
           cwd: "<%= yeoman.app %>/_scss"
-          src: "**/*.{scss,sass}"
+          src: [ "**/*.{scss,sass}" ]
           dest: "<%= yeoman.tmp %>/css"
           ext: ".css"
         }]
@@ -150,11 +150,19 @@ module.exports = (grunt) ->
       options:
         sourceMap: true
       dist:
-        files: [{
-          expand: false
-          src: "<%= yeoman.app %>/_less/bootstrap.less"
-          dest: "<%= yeoman.tmp %>/css/bootstrap.css"
-        }]
+        files: [
+          {
+            expand: false
+            src: [ "<%= yeoman.app %>/_less/bootstrap.less" ]
+            dest: "<%= yeoman.tmp %>/css/bootstrap.css"
+          }
+          {
+            expand: true
+            cwd: "<%= yeoman.app %>"
+            src: [ "_less/**/*.less" ]
+            dest: "<%= yeoman.tmp %>/css/"
+          }
+        ]
 
     # grunt-contrib-less
     jade:
@@ -164,7 +172,7 @@ module.exports = (grunt) ->
         files: [{
           expand: true
           cwd: "<%= yeoman.app %>/_jade"
-          src: "**/*.jade"
+          src: [ "**/*.jade" ]
           dest: "<%= yeoman.app %>"
           ext: ".html"
         }]
@@ -177,14 +185,14 @@ module.exports = (grunt) ->
         files: [{
           expand: true
           cwd: "<%= yeoman.dist %>/css"
-          src: "**/*.css"
+          src: [ "**/*.css" ]
           dest: "<%= yeoman.dist %>/css"
         }]
       server:
         files: [{
           expand: true
           cwd: "<%= yeoman.tmp %>/css"
-          src: "**/*.css"
+          src: [ "**/*.css" ]
           dest: "<%= yeoman.tmp %>/css"
         }]
 
@@ -196,7 +204,7 @@ module.exports = (grunt) ->
         files: [{
           expand: true
           cwd: "<%= yeoman.app %>/_coffee"
-          src: "**/*.coffee"
+          src: [ "**/*.coffee" ]
           dest: "<%= yeoman.tmp %>/js"
           ext: ".js"
         }]
@@ -204,7 +212,7 @@ module.exports = (grunt) ->
         files: [{
           expand: true
           cwd: "test/spec"
-          src: "**/*.coffee"
+          src: [ "**/*.coffee" ]
           dest: "<%= yeoman.tmp %>/spec"
           ext: ".js"
         }]
@@ -214,7 +222,7 @@ module.exports = (grunt) ->
       options:
         bundleExec: true
         config: "_config.yml,_config.build.yml"
-        src: "<%= yeoman.app %>"
+        src: [ "<%= yeoman.app %>" ]
       dist:
         options:
           dest: "<%= yeoman.dist %>"
@@ -248,7 +256,7 @@ module.exports = (grunt) ->
         files: [{
           expand: true
           cwd: "<%= yeoman.dist %>"
-          src: "**/*.html"
+          src: [ "**/*.html" ]
           dest: "<%= yeoman.dist %>"
         }]
 
@@ -272,7 +280,7 @@ module.exports = (grunt) ->
         files: [{
           expand: true
           cwd: "<%= yeoman.dist %>"
-          src: "**/*.{jpg,jpeg,png}"
+          src: [ "**/*.{jpg,jpeg,png}" ]
           dest: "<%= yeoman.dist %>"
         }]
 
@@ -282,7 +290,7 @@ module.exports = (grunt) ->
         files: [{
           expand: true
           cwd: "<%= yeoman.dist %>"
-          src: "**/*.svg"
+          src: [ "**/*.svg" ]
           dest: "<%= yeoman.dist %>"
         }]
 
@@ -311,7 +319,7 @@ module.exports = (grunt) ->
           {
             expand: true
             flatten: true
-            src: [ "<%= yeoman.bootstrap %>/**/*.{eot*,svg,ttf,woff*}" ]
+            src: [ "<%= yeoman.bootstrap %>/**/*.{eot*,otf,svg,ttf,woff*}" ]
             dest: "<%= yeoman.dist %>/font/"
             filter: "isFile"
           }
@@ -334,7 +342,7 @@ module.exports = (grunt) ->
           expand: true
           dot: true
           cwd: "<%= yeoman.app %>/css"
-          src: "**/*.css"
+          src: [ "**/*.css" ]
           dest: "<%= yeoman.tmp %>/css"
         }]
 
@@ -343,12 +351,14 @@ module.exports = (grunt) ->
       options:
         length: 4
       dist:
-        files: [src: [
-          "<%= yeoman.dist %>/js/**/*.js"
-          "<%= yeoman.dist %>/css/**/*.css"
-          "<%= yeoman.dist %>/img/**/*.{gif,jpg,jpeg,png,svg,webp}"
-          "<%= yeoman.dist %>/font/**/*.{eot*,otf,svg,ttf,woff}"
-        ]]
+        files: [{
+          src: [
+            "<%= yeoman.dist %>/js/**/*.js"
+            "<%= yeoman.dist %>/css/**/*.css"
+            "<%= yeoman.dist %>/img/**/*.{gif,jpg,jpeg,png,svg,webp}"
+            "<%= yeoman.dist %>/font/**/*.{eot*,otf,svg,ttf,woff*}"
+          ]
+        }]
 
     # grunt-build-control
     buildcontrol:
