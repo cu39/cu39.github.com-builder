@@ -24,7 +24,7 @@ module.exports = (grunt) ->
       app: "app"
       dist: "dist"
       tmp: ".tmp"
-      bootstrap: "node_modules/bootstrap-less"
+      bootstrap: "node_modules/bootstrap-sass/assets"
 
     # grunt-contrib-watch
     watch:
@@ -123,7 +123,7 @@ module.exports = (grunt) ->
         bundleExec: true
         debugInfo: false
         lineNumbers: false
-        loadPath: "app/_bower_components"
+        loadPath: [ "<%= yeoman.bootstrap %>" ]
         sourcemap: "auto"
       dist:
         files: [
@@ -150,19 +150,12 @@ module.exports = (grunt) ->
       options:
         sourceMap: true
       dist:
-        files: [
-          {
-            expand: false
-            src: [ "<%= yeoman.app %>/_less/bootstrap.less" ]
-            dest: "<%= yeoman.tmp %>/css/bootstrap.css"
-          }
-          {
-            expand: true
-            cwd: "<%= yeoman.app %>"
-            src: [ "_less/**/*.less" ]
-            dest: "<%= yeoman.tmp %>/css/"
-          }
-        ]
+        files: [{
+          expand: true
+          cwd: "<%= yeoman.app %>/_less"
+          src: [ "**/*.less" ]
+          dest: "<%= yeoman.tmp %>/css/"
+        }]
 
     # grunt-contrib-less
     jade:
@@ -316,20 +309,20 @@ module.exports = (grunt) ->
             ]
             dest: "<%= yeoman.dist %>"
           }
-          {
+          { # Bootstrap fonts
             expand: true
             flatten: true
-            src: [ "<%= yeoman.bootstrap %>/**/*.{eot*,otf,svg,ttf,woff*}" ]
-            dest: "<%= yeoman.dist %>/font/"
+            src: [ "<%= yeoman.bootstrap %>/fonts/**/*.{eot*,otf,svg,ttf,woff*}" ]
+            dest: "<%= yeoman.dist %>/font/bootstrap/"
             filter: "isFile"
           }
-          {
+          { # Bootstrap JS
             expand: true
             flatten: true
-            cwd: "<%= yeoman.bootstrap %>/js"
+            cwd: "<%= yeoman.bootstrap %>/javascripts"
             src: [
-              "*.js"
-              "!bootstrap.js"
+              "**/*.js"
+              "!bootstrap*.js"
               "!*.min.js"
             ]
             dest: "<%= yeoman.tmp %>/js/bootstrap/"

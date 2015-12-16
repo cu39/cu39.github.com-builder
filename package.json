@@ -33,7 +33,7 @@
     "load-grunt-tasks": "~3.3.0",
     "time-grunt": "~1.2.2",
     "coffeelint": "~1.14.0",
-    "bootstrap-less": "~3.3.8"
+    "bootstrap-sass": "~3.3.6"
   },
   "engines": {
     "node": ">=0.8.0"
