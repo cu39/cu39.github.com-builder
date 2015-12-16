@@ -362,7 +362,7 @@ module.exports = (grunt) ->
           remote: "git@github.com:cu39/cu39.github.io.git"
           remoteBranch: "master"
           commit: true
-          push: false
+          push: true
 
     # grunt-coffeelint
     coffeelint:
